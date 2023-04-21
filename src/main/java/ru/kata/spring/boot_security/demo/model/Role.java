@@ -1,41 +1,49 @@
 package ru.kata.spring.boot_security.demo.model;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-@Entity(name = "Role")
+@Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-
-    private String name;
+    @Column(name = "name")
+    private String roleName;
 
     @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
     public Role() {
     }
 
-    public Role(String name) {
-        this.name = name;
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 
-    public void addUsers(User user) {
+    public void addUser(User user) {
         users.add(user);
     }
 
-    public void removeUsers(User user) {
+    public void removeUser(User user) {
         users.remove(user);
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public Long getId() {
@@ -46,17 +54,17 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String getAuthority() {
-        return getName();
+        return getRoleName();
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -64,19 +72,20 @@ public class Role implements GrantedAuthority {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return Objects.equals(id, role.id) && Objects.equals(name, role.name);
+        return Objects.equals(id, role.id) && Objects.equals(roleName, role.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, roleName);
     }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", roleName='" + roleName + '\'' +
                 '}';
     }
+
 }
