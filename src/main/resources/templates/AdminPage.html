@@ -53,7 +53,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane active bg-white" id="userstable">
+                            <div class="tab-pane active bg-white border" id="userstable">
                                 <div class="border bg-light">
                                     <h4 class="ms-3">All users</h4>
                                 </div>
@@ -65,7 +65,7 @@
                                             <th scope="col">First name</th>
                                             <th scope="col">Last name</th>
                                             <th scope="col">Age</th>
-                                            <th scope="col">EMail</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Role</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
@@ -82,48 +82,47 @@
                                                         <button type="button" class="btn-close"
                                                                 data-dismiss="modal"></button>
                                                     </div>
-                                                    <div class="modal-body w-50 mx-auto">
+                                                    <form class="formEdit">
 
-                                                        <div class="form-group text-center fw-bold">
-                                                            <label for="id">ID</label>
-                                                            <input type="text" class="form-control bg-muted" id="id"  readonly>
+                                                        <div class="modal-body w-50 mx-auto">
 
-                                                            <label for="firstName">First name</label>
-                                                            <input type="text" class="form-control bg-muted" id="firstName"  >
+                                                            <div class="form-group text-center fw-bold">
+                                                                <label for="id">ID</label>
+                                                                <input type="text" class="form-control bg-muted" id="id"  disabled>
 
-                                                            <label for="lastName">Last name</label>
-                                                            <input type="text" class="form-control bg-muted" id="lastName"  >
+                                                                <label for="firstName">First name</label>
+                                                                <input type="text" class="form-control bg-muted" id="firstName"  >
 
-                                                            <label for="age">Age</label>
-                                                            <input type="text" class="form-control bg-muted" id="age"  >
+                                                                <label for="lastName">Last name</label>
+                                                                <input type="text" class="form-control bg-muted" id="lastName"  >
 
-                                                            <label for="email">Email</label>
-                                                            <input type="text" class="form-control bg-muted" id="email"  >
+                                                                <label for="age">Age</label>
+                                                                <input type="text" class="form-control bg-muted" id="age"  >
 
-                                                            <label for="password">Password</label>
-                                                            <input type="text" class="form-control bg-muted" id="password"  >
+                                                                <label for="email">Email</label>
+                                                                <input type="text" class="form-control bg-muted" id="email"  >
 
-                                                            <label for="roleSelection1">Role</label>
-                                                            <select multiple class="form-control"
-                                                                    id="roleSelection1"
-                                                                    style="max-height: 50px;">
-                                                                <option id="optionEdit">
-                                                                </option>
-                                                            </select>
+                                                                <label for="password">Password</label>
+                                                                <input type="text" class="form-control bg-muted" id="password"  >
+
+                                                                <label for="roleSelection1">Role</label>
+                                                                <select multiple class="form-control"
+                                                                        id="roleSelection1"
+                                                                        style="max-height: 50px;">
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                        <form class="formEdit">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+
                                                             <button id="editBtn" class="btn btn-primary"
                                                                     type="submit">Edit
                                                             </button>
-                                                        </form>
 
-                                                    </div>
-
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +139,7 @@
 
                                                         <div class="form-group text-center fw-bold">
                                                             <label for="idDelete">ID</label>
-                                                            <input type="text" class="form-control bg-muted" id="idDelete"  readonly>
+                                                            <input type="text" class="form-control bg-muted" id="idDelete"  disabled>
 
                                                             <label for="firstNameDelete">First name</label>
                                                             <input type="text" class="form-control bg-muted" id="firstNameDelete" disabled >
@@ -154,12 +153,10 @@
                                                             <label for="emailDelete">Email</label>
                                                             <input type="text" class="form-control bg-muted" id="emailDelete"  disabled>
 
-                                                            <label for="roleSelection1">Role</label>
+                                                            <label for="roleDelete">Role</label>
                                                             <select multiple class="form-control"
                                                                     id="roleDelete"
                                                                     style="max-height: 50px;" disabled>
-                                                                <option id="optionDelete">
-                                                                </option>
                                                             </select>
                                                         </div>
                                                     </div>

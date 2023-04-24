@@ -40,7 +40,6 @@ public class User implements UserDetails {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    @JsonIgnore
     private Set<Role> roles = new HashSet<>();
 
     public User() {
@@ -62,23 +61,26 @@ public class User implements UserDetails {
                 .collect(Collectors.toSet());
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
-    @JsonIgnoreProperties(ignoreUnknown = true)
     public boolean isEnabled() {
         return true;
     }
@@ -137,6 +139,7 @@ public class User implements UserDetails {
         return roles;
     }
 
+    @JsonIgnore
     public String getRolesToString() {
         StringBuilder allRoles = new StringBuilder();
         for (Role role : roles) {

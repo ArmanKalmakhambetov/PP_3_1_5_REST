@@ -82,7 +82,12 @@ public class RestContr {
     public ResponseEntity<User> apiUpdateUser(@PathVariable("id") long id,
                                                          @RequestBody  User user) {
             userService.updateUser(user);
-            return new ResponseEntity<>(userService.getUserById(user.getId()), HttpStatus.OK);
+            return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
 
+    }
+
+    @GetMapping("/users/roles")
+    public ResponseEntity<List<Role>> apiGetAllRoles() {
+        return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
     }
 }
