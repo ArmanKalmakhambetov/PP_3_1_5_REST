@@ -40,31 +40,6 @@ public class RestContr {
         return new ResponseEntity<>("User with ID = " + id + " was deleted", HttpStatus.OK);
     }
 
-    @PutMapping("/users")
-    public ResponseEntity<User> editApiUser(@RequestBody User user, @RequestParam(value = "roles") Set<Role> roles) {
-
-        User edited = new User();
-        edited.setId(user.getId());
-        edited.setUsername(user.getUsername());
-        edited.setLastname(user.getLastname());
-        edited.setAge(user.getAge());
-        edited.setEmail(user.getEmail());
-        edited.setPassword(user.getPassword());
-        edited.setRoles(roleService.getRoles(roles));
-
-        userService.updateUser(edited);
-
-        return new ResponseEntity<>(userService.getUserById(user.getId()), HttpStatus.OK);
-    }
-
-    @PostMapping("/users")
-    public ResponseEntity<User> createApiUser(@RequestBody User user, @RequestParam(value = "roles") Set<Role> roles) {
-
-        user.setRoles(roleService.getRoles(roles));
-        userService.add(user);
-
-        return new ResponseEntity<>(userService.getUserById(user.getId()), HttpStatus.OK);
-    }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getApiUser(@PathVariable Long id) {
@@ -78,12 +53,25 @@ public class RestContr {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<User> apiUpdateUser(@PathVariable("id") long id,
-                                                         @RequestBody  User user) {
-            userService.updateUser(user);
-            return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
 
+        user.setRoles(roleService.getRoles(user.getRoles()));
+
+        userService.add(user);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
+
+        user.setRoles(roleService.getRoles(user.getRoles()));
+        user.setId(id);
+
+        userService.updateUser(user);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/users/roles")

@@ -87,22 +87,22 @@
                                                         <div class="modal-body w-50 mx-auto">
 
                                                             <div class="form-group text-center fw-bold">
-                                                                <label for="id">ID</label>
+                                                                <label>ID</label>
                                                                 <input type="text" class="form-control bg-muted" id="id"  disabled>
 
-                                                                <label for="firstName">First name</label>
+                                                                <label >First name</label>
                                                                 <input type="text" class="form-control bg-muted" id="firstName"  >
 
-                                                                <label for="lastName">Last name</label>
+                                                                <label >Last name</label>
                                                                 <input type="text" class="form-control bg-muted" id="lastName"  >
 
-                                                                <label for="age">Age</label>
+                                                                <label >Age</label>
                                                                 <input type="text" class="form-control bg-muted" id="age"  >
 
-                                                                <label for="email">Email</label>
+                                                                <label >Email</label>
                                                                 <input type="text" class="form-control bg-muted" id="email"  >
 
-                                                                <label for="password">Password</label>
+                                                                <label >Password</label>
                                                                 <input type="text" class="form-control bg-muted" id="password"  >
 
                                                                 <label for="roleSelection1">Role</label>
@@ -184,36 +184,36 @@
                                     <h4 class="ms-3">Add new users</h4>
                                 </div>
                                 <div class="bg-white">
-                                    <div class="text-center mx-auto w-25">
-                                        <div>
-                                            <label for="firstNameNew" class="form-label h5 mt-3">Firstname</label>
-                                            <input id="firstNameNew" type="text"  class="form-control mb-3">
-                                        </div>
-                                        <div>
-                                            <label for="lastNameNew" class="form-label h5">Lastname</label>
-                                            <input id="lastNameNew" type="text" class="form-control mb-3">
-                                        </div>
-                                        <div>
-                                            <label for="ageNew" class="form-label h5">Age</label>
-                                            <input id="ageNew" type="number" class="form-control mb-3">
-                                        </div>
-                                        <div>
-                                            <label for="emailNew" class="form-label h5">Email</label>
-                                            <input id="emailNew" type="email" class="form-control mb-3">
-                                        </div>
-                                        <div>
-                                            <label for="passwordNew" class="form-label h5">Password</label>
-                                            <input id="passwordNew" type="password" class="form-control mb-3">
-                                        </div>
-                                        <div>
-                                            <label for="rolesNew" class="form-label h5">Role</label>
-                                            <select id="rolesNew" class="form-select mb-3" multiple>
-                                            </select>
-                                        </div>
-                                        <form class="formCreate">
+                                    <form id="formCreate" class="formCreate">
+                                        <div class="text-center mx-auto w-25">
+                                            <div>
+                                                <label for="firstNameNew" class="form-label h5 mt-3">Firstname</label>
+                                                <input id="firstNameNew" type="text"  class="form-control mb-3">
+                                            </div>
+                                            <div>
+                                                <label for="lastNameNew" class="form-label h5">Lastname</label>
+                                                <input id="lastNameNew" type="text" class="form-control mb-3">
+                                            </div>
+                                            <div>
+                                                <label for="ageNew" class="form-label h5">Age</label>
+                                                <input id="ageNew" type="number" class="form-control mb-3">
+                                            </div>
+                                            <div>
+                                                <label for="emailNew" class="form-label h5">Email</label>
+                                                <input id="emailNew" type="email" class="form-control mb-3">
+                                            </div>
+                                            <div>
+                                                <label for="passwordNew" class="form-label h5">Password</label>
+                                                <input id="passwordNew" type="password" class="form-control mb-3">
+                                            </div>
+                                            <div>
+                                                <label  class="form-label h5">Role</label>
+                                                <select id="rolesNew" class="form-select mb-3" multiple>
+                                                </select>
+                                            </div>
                                             <button id="btnCreate" type="submit" class="btn btn-success btn-lg">Add new user</button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -238,13 +238,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="pb-3">
-                                        <th scope="row" th:text="${authorizeUser.id}"></th>
-                                        <td th:text="${authorizeUser.username}"></td>
-                                        <td th:text="${authorizeUser.lastname}"></td>
-                                        <td th:text="${authorizeUser.age}"></td>
-                                        <td th:text="${authorizeUser.email}"></td>
-                                        <td th:text="${authorizeUser.getRolesToString()}"></td>
+                                    <tr>
+                                        <th id="IDUser"></th>
+                                        <td id="firstNameUser"></td>
+                                        <td id="lastNameUser"></td>
+                                        <td id="ageUser"></td>
+                                        <td id="emailUser"></td>
+                                        <td id="roleUser"></td>
                                     </tr>
                                     </tbody>
                                 </table>

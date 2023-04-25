@@ -30,20 +30,20 @@ public class Init {
 
         User userAdmin = new User();
         userAdmin.setUsername("admin");
-        userAdmin.setLastname("adminov");
-        userAdmin.setAge((byte)22);
+        userAdmin.setLastname("admin");
+        userAdmin.setAge((byte)35);
         userAdmin.setEmail("admin@mail.ru");
-        userAdmin.setPassword("admin");
+        userAdmin.setPassword("root");
         userAdmin.addRole(roleService.getRoleByRoleName("ROLE_ADMIN"));
         userAdmin.addRole(roleService.getRoleByRoleName("ROLE_USER"));
         userService.add(userAdmin);
 
         User user = new User();
         user.setUsername("user");
-        user.setLastname("userov");
-        user.setAge((byte) 15);
+        user.setLastname("user");
+        user.setAge((byte) 30);
         user.setEmail("user@mail.ru");
-        user.setPassword("user");
+        user.setPassword("root");
         user.addRole(roleService.getRoleByRoleName("ROLE_USER"));
         userService.add(user);
     }

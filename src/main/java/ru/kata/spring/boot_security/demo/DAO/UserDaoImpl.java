@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 
         for (Role role : user.getRoles()) {
 
-            if (role.getRoleName().equals(roleName)) {
+            if (role.getAuthority().equals(roleName)) {
                 user.removeRole(role);
                 break;
             }

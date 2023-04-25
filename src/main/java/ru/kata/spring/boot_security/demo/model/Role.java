@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -38,9 +39,9 @@ public class Role implements GrantedAuthority {
         users.remove(user);
     }
 
-    public String getRoleName() {
-        return roleName;
-    }
+//    public String getRoleName() {
+//        return roleName;
+//    }
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
@@ -55,9 +56,9 @@ public class Role implements GrantedAuthority {
     }
 
     @Override
-    @JsonIgnore
+    @JsonProperty("roleName")
     public String getAuthority() {
-        return getRoleName();
+        return roleName;
     }
 
     public Set<User> getUsers() {

@@ -54,10 +54,11 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles
                 .stream()
-                .map((Role role) -> new SimpleGrantedAuthority(role.getRoleName()))
+                .map((Role role) -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toSet());
     }
 
@@ -143,7 +144,7 @@ public class User implements UserDetails {
     public String getRolesToString() {
         StringBuilder allRoles = new StringBuilder();
         for (Role role : roles) {
-            allRoles.append(role.getRoleName().replaceAll("ROLE_","")).append(" ");
+            allRoles.append(role.getAuthority().replaceAll("ROLE_","")).append(" ");
         }
 
         return allRoles.toString();
