@@ -80,7 +80,7 @@
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Edit user</h4>
                                                         <button type="button" class="btn-close"
-                                                                data-dismiss="modal"></button>
+                                                                data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <form class="formEdit">
 
@@ -114,7 +114,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close
+                                                                    data-bs-dismiss="modal">Close
                                                             </button>
 
                                                             <button id="editBtn" class="btn btn-primary"
@@ -133,7 +133,7 @@
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Delete user</h4>
                                                         <button type="button" class="btn-close"
-                                                                data-dismiss="modal"></button>
+                                                                data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <div class="modal-body w-50 mx-auto">
 
@@ -162,7 +162,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close
+                                                                data-bs-dismiss="modal">Close
                                                         </button>
                                                         <form class="formDelete">
                                                             <button class="btn btn-danger"
@@ -207,8 +207,9 @@
                                                 <input id="passwordNew" type="password" class="form-control mb-3">
                                             </div>
                                             <div>
-                                                <label  class="form-label h5">Role</label>
-                                                <select id="rolesNew" class="form-select mb-3" multiple>
+                                                <label>Role</label>
+                                                <select id="rolesNew" multiple class="form-control"
+                                                        style="max-height: 50px;">
                                                 </select>
                                             </div>
                                             <button id="btnCreate" type="submit" class="btn btn-success btn-lg">Add new user</button>
@@ -233,7 +234,7 @@
                                         <th scope="col">First name</th>
                                         <th scope="col">Last name</th>
                                         <th scope="col">Age</th>
-                                        <th scope="col">EMail</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col">Role</th>
                                     </tr>
                                     </thead>
@@ -256,6 +257,7 @@
         </div>
     </div>
 </div>
+<script src="/script/appForUser.js"></script>
 <script src="/script/app.js"></script>
 </body>
 </html>

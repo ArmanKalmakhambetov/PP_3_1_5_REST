@@ -3,6 +3,9 @@ package ru.kata.spring.boot_security.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,8 +51,8 @@ public class RestContr {
     }
 
     @GetMapping("/users/auth")
-    public ResponseEntity<User> getApiAuthUser() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<User> getApiAuthUser(@AuthenticationPrincipal User user) {
+
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

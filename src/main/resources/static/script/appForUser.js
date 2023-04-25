@@ -1,7 +1,6 @@
 const urlAuth = "/api/users/auth";
 
 getAuthUser()
-
 getUserInfo()
 
 async function getAuthUser() {

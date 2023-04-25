@@ -1,5 +1,4 @@
-const url = "/api/users/";
-const urlAuth = "/api/users/auth";
+const url= "/api/users/";
 const urlRoles = "/api/users/roles";
 const table = document.querySelector("#tbody");
 let result = '';
@@ -35,33 +34,21 @@ const emailNew = document.querySelector("#emailNew");
 const passwordNew = document.querySelector("#passwordNew");
 let rolesNew = document.querySelector("#rolesNew");
 
-const btnCreate = document.querySelector("#btnCreate");
+
+getAuthUser();
+
+getUserTable();
+
+fillRoles();
+
+getUserInfo()
+
 
 async function getAllRoles() {
     const res = await fetch(urlRoles);
     const roles = await res.json();
     return roles.map(role => role.roleName);
 }
-
-
-getAuthUser();
-
-async function getAuthUser() {
-    await fetch(urlAuth)
-        .then(res => res.json())
-        .then(user => {
-            let username = document.querySelector("#username");
-            username.innerHTML = user.email;
-            let roleForlabel = document.querySelector("#roleForLabel");
-            let userRoles = "";
-            for (let role of user.roles) {
-                userRoles += role.roleName.substring(5) + " ";
-            }
-            roleForlabel.innerHTML = userRoles;
-        })
-}
-
-getUserTable();
 
 async function getUserTable(json) {
     await fetch(url, {
@@ -82,8 +69,8 @@ async function getUserTable(json) {
                     <td>${user.age}</td>
                     <td>${user.email}</td>
                     <td>${roles}</td>
-                    <td><a id="btnEdit" class="btnEdit btn btn-info text-white">Edit</a></td>
-                    <td><a id="btnDelete" class="btnDelete btn btn-danger">Delete</a></td>
+                    <td><a id="btnEdit" class='btnEdit btn btn-info' data-bs-toggle='modal'>Edit</a></td>
+                    <td><a id="btnDelete" class='btnDelete btn btn-danger' data-bs-toggle='modal'>Delete</a></td>
                 </tr>
         `
             })
@@ -100,7 +87,6 @@ const on = (element, event, selector, handler) => {
         }
     })
 }
-
 
 let idForm = 0;
 
@@ -155,7 +141,6 @@ on(document, 'click', '#btnEdit', async e => {
 
 })
 
-
 formEdit.addEventListener("submit", (e) => {
     e.preventDefault();
     if (option === "edit") {
@@ -190,11 +175,9 @@ formEdit.addEventListener("submit", (e) => {
     }
 })
 
-
 formDelete.addEventListener('submit', (e) => {
-    e.preventDefault(); // предотвращаем перезагрузку страницы
+    e.preventDefault();
     if (option == "delete") {
-        // console.log("delete")
 
         fetch(url + idForm, {
             method: "DELETE"
@@ -207,8 +190,6 @@ formDelete.addEventListener('submit', (e) => {
             })
     }
 })
-
-fillRoles();
 
 async function fillRoles() {
     const allRoles = await getAllRoles();
@@ -223,14 +204,12 @@ async function fillRoles() {
 formCreate.addEventListener("submit", (e) => {
     e.preventDefault();
 
-
     let firstName = firstNameNew.value;
     let lastName = lastNameNew.value;
     let age = ageNew.value;
     let email = emailNew.value;
     let password = passwordNew.value;
     let roles = [];
-
 
     for (let option of rolesNew.options) {
         if (option.selected) {
@@ -255,7 +234,6 @@ formCreate.addEventListener("submit", (e) => {
     })
         .then(response => response.json())
         .then(() => {
-            // очищаем поля формы
             firstNameNew.value = "";
             lastNameNew.value = "";
             ageNew.value = "";
@@ -268,31 +246,5 @@ formCreate.addEventListener("submit", (e) => {
         .catch(error => console.error("Error:", error));
 });
 
-getUserInfo();
 
-async function getUserInfo() {
-    await fetch(urlAuth, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(res => res.json())
-        .then(authUser => {
-            const idUser = document.querySelector("#IDUser")
-            const firstNameUser = document.querySelector("#firstNameUser")
-            const lastNameUser = document.querySelector("#lastNameUser")
-            const ageUser = document.querySelector("#ageUser")
-            const emailUser = document.querySelector("#emailUser")
-            const roleUser = document.querySelector("#roleUser")
-
-            idUser.innerHTML = authUser.id;
-            firstNameUser.innerHTML = authUser.username;
-            lastNameUser.innerHTML = authUser.lastname;
-            ageUser.innerHTML = authUser.age;
-            emailUser.innerHTML = authUser.email;
-            roleUser.innerHTML = authUser.roles.map(role => role.roleName.replaceAll("ROLE_", "")).join(", ");
-        })
-
-}
 
