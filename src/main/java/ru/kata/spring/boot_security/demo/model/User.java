@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -144,7 +143,7 @@ public class User implements UserDetails {
     public String getRolesToString() {
         StringBuilder allRoles = new StringBuilder();
         for (Role role : roles) {
-            allRoles.append(role.getAuthority().replaceAll("ROLE_","")).append(" ");
+            allRoles.append(role.getAuthority().replaceAll("ROLE_", "")).append(" ");
         }
 
         return allRoles.toString();

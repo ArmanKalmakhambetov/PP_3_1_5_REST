@@ -45,7 +45,7 @@ public class RoleDaoImpl implements RoleDao {
     public Set<Role> getRoles(Set<Role> roles) {
         Set<Role> rolesSet = new HashSet<>();
         for (Role role : roles) {
-            if(role.getAuthority().contains("ROLE_")){
+            if (role.getAuthority().contains("ROLE_")) {
                 rolesSet.add(getRoleByRoleName(role.getAuthority()));
             } else {
                 rolesSet.add(getRoleByRoleName("ROLE_" + role.getAuthority()));

@@ -31,7 +31,7 @@ public class Init {
         User userAdmin = new User();
         userAdmin.setUsername("admin");
         userAdmin.setLastname("admin");
-        userAdmin.setAge((byte)35);
+        userAdmin.setAge((byte) 35);
         userAdmin.setEmail("admin@mail.ru");
         userAdmin.setPassword("root");
         userAdmin.addRole(roleService.getRoleByRoleName("ROLE_ADMIN"));

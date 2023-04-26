@@ -1,4 +1,4 @@
-const url= "/api/users/";
+const url = "/api/users/";
 const urlRoles = "/api/users/roles";
 const table = document.querySelector("#tbody");
 let result = '';
@@ -8,8 +8,8 @@ const modalDelete = new bootstrap.Modal(document.querySelector("#modalDelete"));
 
 const formDelete = document.querySelector(".formDelete");
 const formCreate = document.querySelector(".formCreate");
-
 const formEdit = document.querySelector(".formEdit");
+const formAfterAdd = document.querySelector(".formAfterAdd")
 
 const ID1 = document.querySelector("#id");
 const firstName1 = document.querySelector("#firstName");
@@ -69,7 +69,7 @@ async function getUserTable(json) {
                     <td>${user.age}</td>
                     <td>${user.email}</td>
                     <td>${roles}</td>
-                    <td><a id="btnEdit" class='btnEdit btn btn-info' data-bs-toggle='modal'>Edit</a></td>
+                    <td><a id="btnEdit" class='btnEdit btn btn-info text-white' data-bs-toggle='modal'>Edit</a></td>
                     <td><a id="btnDelete" class='btnDelete btn btn-danger' data-bs-toggle='modal'>Delete</a></td>
                 </tr>
         `
@@ -241,6 +241,7 @@ formCreate.addEventListener("submit", (e) => {
             passwordNew.value = "";
             result = "";
             getUserTable();
+            document.getElementById("userTable").click();
 
         })
         .catch(error => console.error("Error:", error));
